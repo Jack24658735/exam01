@@ -27,7 +27,7 @@ int main() {
 //wave
     PWM1.period(0.001); // freq = 1000Hz
     PWM1 = 0;
-    // Aout = PWM1;
+    
     for (i = 0; i < sample; i++){
         ADCdata[i] = PWM1;
         wait(1./sample);
@@ -39,12 +39,13 @@ int main() {
    
     while (1) {
         for (int i = 0; i < 10; ++i) {
-            PWM1 += 0.1;
-            
+            PWM1 = PWM1 + 0.1;
+            Aout = PWM1;
             wait(0.1);
         }
         for (int i = 0; i < 10; ++i) {
-            PWM1 -= 0.1;
+            PWM1 = PWM1 - 0.1;
+            Aout = PWM1;
             wait(0.1);
         }
     }
